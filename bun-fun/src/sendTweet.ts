@@ -8,6 +8,8 @@ import {
 	TWITTER_TOKEN_SECRET,
 } from "@/config";
 
+// TODO(2026-10-19): X API rejects this app with 403 "client-not-enrolled" (no successful tweet since 2026-02-23).
+// Enroll the developer app in a Project on developer.x.com, then backfill. See MAINTENANCE.md.
 const tweetQueue: string[] = [];
 
 export async function sendTweet(message: string) {

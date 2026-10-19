@@ -24,6 +24,8 @@ const backfillEvents = async (
 		abi: courseConfig.abi as Abi,
 		address: courseConfig.address[chainId],
 		eventName: "ChallengeSolved",
+		// TODO(2026-10-19): Alchemy Free tier caps eth_newFilter/eth_getLogs at 10 blocks, so this full-range
+		// filter fails. Query in chunks (e.g. public RPC) before backfilling. See MAINTENANCE.md.
 		fromBlock: chainId === arbitrum.id ? 97795932n : 34760049n,
 	});
 
